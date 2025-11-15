@@ -1,0 +1,12 @@
+Nov 04, 2025 11:31:26 PM Practica7.SistemaBancoAI agregarCuenta
+INFO: Cuenta creada: ABC123647 con saldo: 1000.0
+Nov 04, 2025 11:31:26 PM Practica7.SistemaBancoAI retirar
+INFO: Retiro exitoso de 200.0 en la cuenta ABC123647
+Nov 04, 2025 11:31:26 PM Practica7.SistemaBancoAI guardarDatos
+INFO: Datos guardados correctamente en archivo.
+Nov 04, 2025 11:32:08 PM Practica7.SistemaBancoAI agregarCuenta
+INFO: Cuenta creada: 123647 con saldo: 1000.0
+Nov 04, 2025 11:32:08 PM Practica7.SistemaBancoAI retirar
+INFO: Retiro exitoso de 200.0 en la cuenta 123647
+Nov 04, 2025 11:32:08 PM Practica7.SistemaBancoAI guardarDatos
+INFO: Datos guardados correctamente en archivo.
