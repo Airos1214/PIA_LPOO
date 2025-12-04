@@ -9,8 +9,8 @@ public class CuentaBancaria1412 {
 
     public CuentaBancaria1412(String numeroCuenta, String nombre, double saldo, String tipoCuenta) {
         try {
-            if (!numeroCuenta.endsWith("647")) {
-                throw new Exception("El número de cuenta debe terminar en 647");
+            if (!numeroCuenta.endsWith("4647")) {
+                throw new Exception("El número de cuenta debe terminar en 4647");
             }
             if (saldo < 0) {
                 throw new Exception("El saldo inicial no puede ser negativo");
@@ -49,8 +49,8 @@ public class CuentaBancaria1412 {
 
     public void setNumeroCuenta(String numeroCuenta) {
         try {
-            if (!numeroCuenta.endsWith("647")) {
-                throw new Exception("El número de cuenta es inválido (debe terminar en 647)");
+            if (!numeroCuenta.endsWith("4647")) {
+                throw new Exception("El número de cuenta es inválido (debe terminar en 4647)");
             }
             this.numeroCuenta = numeroCuenta;
         } catch (Exception e) {
@@ -100,3 +100,4 @@ public class CuentaBancaria1412 {
                 "\nActiva: " + (activa ? "Sí" : "No");
     }
 }
+
