@@ -7,8 +7,8 @@ public class BancoConcurrenteAI {
         CuentaBancaria cuenta = new CuentaBancaria(1000.0);
         System.out.println("Saldo inicial de la cuenta: $" + cuenta.getSaldo());
 
-        CajeroThread14 cajero1 = new CajeroThread14(cuenta, 150.0, "Cajero-1");
-        CajeroThread14 cajero2 = new CajeroThread14(cuenta, 550.0, "Cajero-2");
+        CajeroThread14 cajero1 = new CajeroThread14(cuenta, 150.0, "Cajero-1 ");
+        CajeroThread14 cajero2 = new CajeroThread14(cuenta, 550.0, "Cajero-2 ");
 
         ClienteRunnable12 cliente1 = new ClienteRunnable12(cuenta, "Alexis", 999.0, 99.0);
         ClienteRunnable12 cliente2 = new ClienteRunnable12(cuenta, "Anastasio", 666.0, 66.0);

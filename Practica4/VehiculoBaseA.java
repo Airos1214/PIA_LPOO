@@ -26,11 +26,7 @@ public class VehiculoBaseA {
             this.marca = "Desconocida";
             this.modelo = "Desconocido";
             this.anio = 1886;
-            return;
         }
-        this.marca = marca;
-        this.modelo = modelo;
-        this.anio = anio;
     }
 
     public void encender() {

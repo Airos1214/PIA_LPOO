@@ -27,7 +27,7 @@ public class GerenteIbarra extends EmpleadoAI implements Bonificable14, Evaluabl
             throw new IllegalArgumentException("El porcentaje no puede ser negativo");
         }
         double bonificacion = salario * (porcentaje / 100);
-        salario += bonificacion;
+        setSalario(salario + bonificacion);
         System.out.println(nombre + " ha recibido una bonificación del " + porcentaje + "%, nuevo salario: " + salario);
     }
 
@@ -45,7 +45,7 @@ public class GerenteIbarra extends EmpleadoAI implements Bonificable14, Evaluabl
             throw new IllegalArgumentException("El aumento de salario no puede ser negativo");
         }
         this.cargo = nuevoCargo;
-        this.salario += aumentoSalario;
+        setSalario(salario + aumentoSalario);
         System.out.println(nombre + " ha sido promovido a " + nuevoCargo + " con un aumento de salario de " + aumentoSalario + ", nuevo salario: " + salario);
     }
 

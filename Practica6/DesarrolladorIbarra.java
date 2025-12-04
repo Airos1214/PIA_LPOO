@@ -12,15 +12,29 @@ public class DesarrolladorIbarra extends EmpleadoAI implements Promovible4647, B
 
     @Override
     public void promover(String nuevoCargo, double aumentoSalario) {
-        System.out.println(nombre + " ha sido promovido a " + nuevoCargo + " con un aumento de salario de " + aumentoSalario);
+        if (nuevoCargo == null) {
+            throw new IllegalArgumentException("El nuevo cargo no puede ser nulo");
+        }
+
+        if (aumentoSalario < 0) {
+            throw new IllegalArgumentException("El aumento de salario no puede ser negativo");
+        }
+
         setSalario(getSalario() + aumentoSalario);
+        System.out.println(nombre + " ha sido promovido a " + nuevoCargo + " con un aumento de salario de " + aumentoSalario
+        + ", el nuevo salario es: " + getSalario());
+
     }
 
     @Override
     public void bonificar(double porcentaje) {
+        if (porcentaje < 0) {
+            throw new IllegalArgumentException("El porcentaje no puede ser negativo");
+        }
+
         double bonificacion = getSalario() * (porcentaje / 100);
-        System.out.println(nombre + " ha recibido una bonificación de " + bonificacion);
         setSalario(getSalario() + bonificacion);
+        System.out.println(nombre + " ha recibido una bonificación de " + bonificacion);
     }
 
     @Override

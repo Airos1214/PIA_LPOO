@@ -124,6 +124,7 @@ public class Main {
                     }
 
                     System.out.println("Backup ups finalizados");
+                    break;
 
                 case 8:
                     System.out.println("Generando log de actividades en " + archivoCsv + "...");

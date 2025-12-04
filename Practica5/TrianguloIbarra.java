@@ -1,34 +1,32 @@
 package Practica5;
 
 public class TrianguloIbarra extends Figura14{
-    private double base;
-    private double altura;
+    private double lado;
 
-    public TrianguloIbarra(double base, double altura) {
+    public TrianguloIbarra(double lado) {
         super("Triangulo");
-        if(base <= 0 || altura <= 0) {
-            throw new IllegalArgumentException("La base y la altura deben ser mayores que 0");
+        if(lado <= 0) {
+            throw new IllegalArgumentException("El lado debe ser mayor que 0");
         }
-        this.base = base;
-        this.altura = altura;
+        this.lado = lado;
     }
 
-    public TrianguloIbarra() {this(1.0, 2.0);}
-    public TrianguloIbarra(double lado) {this(lado, lado);}
+    public TrianguloIbarra() {
+        this(3.0);
+    }
 
     @Override
     public double obtenerArea(){
-        return (base * altura) / 2;
+        return (Math.sqrt(3) / 4) * lado * lado;
     }
 
     @Override
     public double obtenerPerimetro() {
-        return base * 3;  // Nota: debe ser un triangulo equilatero
+        return lado * 3;  // Nota: debe ser un triangulo equilatero
     }
 
     @Override
     public void imprimirInfo() {
-        System.out.println("La base del triangulo es de: " + base
-        + " y la altura es de: " + altura);
+        System.out.println("El lado del triangulo equilatero es igual a: " + String.format("%.2f", lado));
     }
 }

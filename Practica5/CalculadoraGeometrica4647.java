@@ -7,8 +7,8 @@ public class CalculadoraGeometrica4647 {
         }
         for (Figura14 figura : figuras) {
             figura.imprimirInfo();
-            System.out.println("El area es de: " + figura.obtenerArea());
-            System.out.println("El perimetro es de: " + figura.obtenerPerimetro());
+            System.out.println("El area es de: " + String.format("%.2f",figura.obtenerArea()));
+            System.out.println("El perimetro es de: " + String.format("%.2f",figura.obtenerPerimetro()));
             System.out.println("*****************************");
         }
     }

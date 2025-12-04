@@ -85,6 +85,10 @@ public class GestorArchivosIbarra4647 {
     }
 
     public void escribirCSV(String rutaArchivo, List<String[]> datos) {
+        if (datos == null || datos.isEmpty()) {
+            System.err.println("No hay datos que se puedan escribir");
+            return;
+        }
         try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(rutaArchivo),
                 StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
             for (String[] linea : datos) {
@@ -115,7 +119,7 @@ public class GestorArchivosIbarra4647 {
         String timestamp = now.format(formato);
 
         Path origen = Paths.get(archivoOriginal);
-        Path destino = Paths.get(carpetaBackup, "Backup_" + timestamp + ".dat");
+        Path destino = Paths.get(carpetaBackup, "Backup_1412" + timestamp + ".dat");
 
         try {
             this.crearDirectorio(carpetaBackup);

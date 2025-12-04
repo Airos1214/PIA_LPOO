@@ -351,6 +351,13 @@ public class SistemaEstudiantilA4647 extends Application {
             return;
         }
 
+        int semestreInt = Integer.parseInt(campoSemestre.getText());
+        if (semestreInt < 1 || semestreInt > 10) {
+            mostrarDialogoError("El semestre debe estar entre 1 y 10");
+            campoSemestre.aplicarEstiloError(true);
+            return;
+        }
+
         String matricula = campoMatricula.getText();
         for (Estudiante est : listaEstudiantes) {
             if (est.getMatricula().equals(matricula)) {

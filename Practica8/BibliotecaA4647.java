@@ -1,9 +1,7 @@
 package Practica8;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class BibliotecaA4647 {
     private final ArrayList<Libro1412> libros = new ArrayList<>();
@@ -40,11 +38,20 @@ public class BibliotecaA4647 {
                 }
             }
 
-            boolean remover = libros.removeIf(libro -> libro.getTitulo().equalsIgnoreCase(titulo));
-            if (remover) {
-                System.out.println("Se ha eliminado el libro: " + titulo);
+            Iterator<Libro1412> iteracion = libros.iterator();
+            boolean eliminar = false;
+            while(iteracion.hasNext()) {
+                Libro1412 libro = iteracion.next();
+                if (libro.getTitulo().equalsIgnoreCase(titulo)) {
+                    iteracion.remove();
+                    eliminar = true;
+                }
+            }
+
+            if (eliminar) {
+                System.out.println("Libro eliminado:" + titulo);
             } else {
-                System.out.println("No se encontró el libro: " + titulo);
+                System.out.println("No se pudo encontrar el libro:" + titulo);
             }
         } catch (Exception e) {
             System.err.println("Error al eliminar el libro: " + e.getMessage());
@@ -65,7 +72,7 @@ public class BibliotecaA4647 {
     public void registrarUsuario(int id, String nombre) {
         try {
             if (nombre == null || nombre.isEmpty()) {
-                throw new IllegalArgumentException("El ID y el nombre no pueden ser nulos o vacíos.");
+                throw new IllegalArgumentException("El nombre no puede ser nulos o vacío.");
             }
 
             for(int i = 0; i < nombre.length(); i++) {
@@ -85,7 +92,7 @@ public class BibliotecaA4647 {
                 return;
             }
 
-            usuarios.put(id, nombre);
+            usuarios.put(id, nombre.trim());
             System.out.println("Usuario registrado: " + nombre + " con ID: " + id);
         } catch (Exception e) {
             System.err.println("Error al registrar el usuario: " + e.getMessage());
@@ -108,7 +115,6 @@ public class BibliotecaA4647 {
             if (titulo == null || titulo.isEmpty()) {
                 throw new IllegalArgumentException("El título no puede ser nulo o vacío.");
             }
-
             for(int i = 0; i < titulo.length(); i++) {
                 char c = titulo.charAt(i);
                 if (Character.isDigit(c)) {
@@ -116,7 +122,7 @@ public class BibliotecaA4647 {
                     return;
                 }
             }
-            if(!libros.stream().anyMatch(libro -> libro.getTitulo().equalsIgnoreCase(titulo))) {
+            if(libros.stream().noneMatch(libro -> libro.getTitulo().equalsIgnoreCase(titulo))) {
                 System.out.println("El libro con título " + titulo + " no está disponible en la biblioteca.");
                 return;
             }
@@ -134,13 +140,13 @@ public class BibliotecaA4647 {
             return;
         }
         System.out.println("Libros reservados:");
-        for (String titulo : reservas) {
-            System.out.println("- " + titulo);
+        Iterator<String> iteracion = reservas.iterator();
+        while (iteracion.hasNext()) {
+            System.out.println("- " + iteracion.next());
         }
     }
 
     public void buscarPorAutor(String autor) {
-        boolean encontrado = false;
         if (autor == null || autor.isEmpty()) {
             System.out.println("El autor no puede ser nulo o vacío.");
             return;
@@ -152,29 +158,30 @@ public class BibliotecaA4647 {
                 return;
             }
         }
-        for (Libro1412 libro : libros) {
-            if (libro.getAutor().equalsIgnoreCase(autor)) {
-                System.out.println("Libro encontrado: " + libro.getTitulo() + " por " + libro.getAutor());
-                encontrado = true;
-            }
-        }
-        if (!encontrado) {
+
+        List<Libro1412> busqueda = libros.stream().filter(libro ->libro.getAutor().equalsIgnoreCase(autor))
+                .collect(Collectors.toList());
+
+        if (busqueda.isEmpty()) {
             System.out.println("No se encontraron libros del autor: " + autor);
+        } else {
+            busqueda.forEach(libro -> System.out.println("Encontrado: " + libro));
         }
+
     }
 
     public void ordenarPorAutor() {
         libros.sort(new ComparadorPorAutor());
-        System.out.println("Libros ordenados por autor:");
-        mostrarLibros();
     }
 
     public void medirTiempoOrdenamientoPorAutor() {
         long inicio = System.nanoTime();
         ordenarPorAutor();
         long fin = System.nanoTime();
+        System.out.println("Libros ordenados por autor");
+        mostrarLibros();
         long duracion = fin - inicio;
-        System.out.println("Tiempo de ordenamiento por autor: " + duracion + " nanosegundos");
+        System.out.println("\nTiempo de ordenamiento por autor: " + duracion + " nanosegundos");
     }
 }
 

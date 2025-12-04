@@ -25,7 +25,7 @@ public class CuentaBancaria {
     }
 
     public synchronized boolean retirar(double cantidad, String nombreHilo) {
-        System.out.println(nombreHilo + "intenta retirar: $" + cantidad);
+        System.out.println(nombreHilo + "intenta retirar: $ " + cantidad);
 
         if (saldo >= cantidad) {
             double saldoAnterior = saldo;
@@ -36,10 +36,10 @@ public class CuentaBancaria {
                 Thread.currentThread().interrupt();
             }
             saldo -= cantidad;
-            System.out.println(nombreHilo + "retiró: $" + cantidad + ", Saldo anterior: $" + saldoAnterior + ", Saldo nuevo: $" + saldo);
+            System.out.println(nombreHilo + "retiró: $ " + cantidad + ", Saldo anterior: $ " + saldoAnterior + ", Saldo nuevo: $ " + saldo);
             return true;
         } else {
-            System.out.println(nombreHilo + "no pudo retirar: $" + cantidad + ", Saldo insuficiente: $" + saldo);
+            System.out.println(nombreHilo + "no pudo retirar: $ " + cantidad + ", Saldo insuficiente: $ " + saldo);
             return false;
         }
     }

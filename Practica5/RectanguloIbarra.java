@@ -13,9 +13,6 @@ public class RectanguloIbarra extends Figura14{
         this.altura = altura;
     }
 
-    public RectanguloIbarra() {this(2.0, 3.0);}
-    public RectanguloIbarra(double lado) {this(lado, lado);}
-
     @Override
     public double obtenerArea() {
         return base * altura;

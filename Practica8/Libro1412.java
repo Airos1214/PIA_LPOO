@@ -15,16 +15,22 @@ public class Libro1412 implements Comparable<Libro1412> {
         if(anio <= 0) {
             throw new IllegalArgumentException("El año debe ser un número positivo.");
         }
-        this.titulo = titulo;
-        this.autor = autor;
+        this.titulo = titulo.trim();
+        this.autor = autor.trim();
         this.anio = anio;
     }
 
-    public String getTitulo() {return titulo;}
+    public String getTitulo() {
+        return titulo;
+    }
 
-    public String getAutor() {return autor;}
+    public String getAutor() {
+        return autor;
+    }
 
-    public int getAnio() {return anio;}
+    public int getAnio() {
+        return anio;
+    }
 
     @Override
     public int compareTo(Libro1412 otro) {

@@ -3,7 +3,6 @@ package Practica10;
 public class Consumidor implements Runnable {
     private BufferCompartido buffer;
     private String nombre;
-    private int consumir = 0;
 
     public Consumidor(BufferCompartido buffer, String nombre) {
         this.buffer = buffer;
@@ -12,6 +11,7 @@ public class Consumidor implements Runnable {
 
     @Override
     public void run() {
+        int consumir = 0;
         while (consumir < 5) {
             try {
                 buffer.consumir(nombre);

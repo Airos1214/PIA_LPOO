@@ -19,8 +19,11 @@ public class SistemaBancoAI {
     }
 
     public void agregarCuenta(String matricula, double saldo) throws Matricula14InvalidaException {
-        if (matricula == null || !matricula.endsWith("647")) {
-            throw new Matricula14InvalidaException("Matrícula inválida (debe terminar en 647)");
+        if (matricula == null || !matricula.endsWith("4647")) {
+            throw new Matricula14InvalidaException("Matrícula inválida (debe terminar en 4647)");
+        }
+        if (saldo < 0) {
+            throw new IllegalArgumentException("El saldo debe ser mayor que 0");
         }
         cuentas.put(matricula, saldo);
         logger.info("Cuenta creada: " + matricula + " con saldo: " + saldo);
@@ -37,8 +40,12 @@ public class SistemaBancoAI {
         if (!cuentas.containsKey(matricula)) {
             throw new Usuario4647NoEncontradoException("Usuario no encontrado");
         }
+        if (monto <= 0) {
+            throw new IllegalArgumentException("El monto debe ser mayor que 0");
+        }
 
         double saldoActual = cuentas.get(matricula);
+
         if (monto > saldoActual) {
             throw new Saldo12InsuficienteException("Saldo insuficiente");
         }
@@ -47,7 +54,7 @@ public class SistemaBancoAI {
         logger.info("Retiro exitoso de " + monto + " en la cuenta " + matricula);
     }
 
-    // Uso de try-with-resources
+    // Aqui se usa try-with-resources
     public void guardarDatos() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Practica7/cuentas_guardadas.txt"))) {
             for (String matricula : cuentas.keySet()) {

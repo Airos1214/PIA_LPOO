@@ -6,7 +6,7 @@ public class Main {
 
         try {
             banco.agregarCuenta("123647", 1000);
-            banco.agregarCuenta("456", 500);
+            banco.agregarCuenta("4647", 500);
         } catch (Matricula14InvalidaException e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -19,13 +19,13 @@ public class Main {
         }
 
         try {
-            banco.retirar("999647", 50); // Provoca UsuarioNoEncontradoException
+            banco.retirar("994647", 50);
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
 
         try {
-            banco.retirar("123647", 2000); // Provoca SaldoInsuficienteException
+            banco.retirar("124647", 2000);
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }

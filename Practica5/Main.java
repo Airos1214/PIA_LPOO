@@ -2,14 +2,14 @@ package Practica5;
 
 public class Main {
     public static void main(String[] args) {
-        Figura14[] figuras = null;
+        Figura14[] figuras;
 
         try {
             figuras = new Figura14[3];
 
             figuras[0] = new CirculoIbarra(2);
             figuras[1] = new RectanguloIbarra(4, 4);
-            figuras[2] = new TrianguloIbarra(3, 1);
+            figuras[2] = new TrianguloIbarra(3.0);
 
         } catch (IllegalArgumentException e) {
             System.err.println("Error en los datos ingresados: " + e.getMessage());
